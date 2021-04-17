@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svasconc <svasconc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 22:20:49 by svasconc          #+#    #+#             */
-/*   Updated: 2021/04/13 19:01:52 by svasconc         ###   ########.fr       */
+/*   Created: 2021/04/16 18:34:19 by svasconc          #+#    #+#             */
+/*   Updated: 2021/04/16 23:02:18 by svasconc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int	count;
+#include <unistd.h>
 
-	count = 0;
-	while (src[count] != '\0' && count < n)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
 	{
-		dest[count] = src[count];
-		count++;
+		ft_putchar('-');
+		ft_putchar('2');
+		nb = 147483648;
+		ft_putnbr(nb);
 	}
-	while (count < n)
+	else if (nb < 0)
 	{
-		dest[count] = '\0';
-		count++;
+		ft_putchar('-');
+		ft_putnbr(nb * -1);
 	}
-	return (dest);
+	else if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		ft_putchar(nb + '0');
+	}
 }

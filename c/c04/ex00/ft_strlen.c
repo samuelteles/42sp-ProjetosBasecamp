@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svasconc <svasconc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 22:20:49 by svasconc          #+#    #+#             */
-/*   Updated: 2021/04/13 19:01:52 by svasconc         ###   ########.fr       */
+/*   Created: 2021/04/16 18:34:05 by svasconc          #+#    #+#             */
+/*   Updated: 2021/04/16 22:22:52 by svasconc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strlen(char *str)
 {
-	unsigned int	count;
+	int count;
 
 	count = 0;
-	while (src[count] != '\0' && count < n)
-	{
-		dest[count] = src[count];
+	while (str[count] != '\0')
 		count++;
-	}
-	while (count < n)
-	{
-		dest[count] = '\0';
-		count++;
-	}
-	return (dest);
+	return (count);
 }

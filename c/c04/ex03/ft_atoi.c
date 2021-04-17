@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svasconc <svasconc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 22:20:49 by svasconc          #+#    #+#             */
-/*   Updated: 2021/04/13 19:01:52 by svasconc         ###   ########.fr       */
+/*   Created: 2021/04/16 18:34:22 by svasconc          #+#    #+#             */
+/*   Updated: 2021/04/17 00:08:37 by svasconc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int		ft_atoi(char *str)
 {
-	unsigned int	count;
+	int number;
+	int sign;
 
-	count = 0;
-	while (src[count] != '\0' && count < n)
+	number = 0;
+	sign = 1;
+	while ((*str == ' ') || (*str == '\t') || (*str == '\n') || (*str == '\v')
+	|| (*str == '\f') || (*str == '\r'))
+		str++;
+	while (*str == '-' || (*str == '+'))
 	{
-		dest[count] = src[count];
-		count++;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	while (count < n)
+	while (*str >= '0' && *str <= '9')
 	{
-		dest[count] = '\0';
-		count++;
+		number *= 10;
+		number += *str - '0';
+		str++;
 	}
-	return (dest);
+	return (sign * number);
 }

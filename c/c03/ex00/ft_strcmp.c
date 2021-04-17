@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svasconc <svasconc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 22:20:49 by svasconc          #+#    #+#             */
-/*   Updated: 2021/04/13 19:01:52 by svasconc         ###   ########.fr       */
+/*   Created: 2021/04/14 16:41:09 by svasconc          #+#    #+#             */
+/*   Updated: 2021/04/15 01:52:29 by svasconc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strcmp(char *s1, char *s2)
 {
-	unsigned int	count;
+	int	count;
 
 	count = 0;
-	while (src[count] != '\0' && count < n)
+	while (s1[count] == s2[count])
 	{
-		dest[count] = src[count];
+		if (s1[count] == '\0' && s2[count] == '\0')
+			return (0);
 		count++;
 	}
-	while (count < n)
-	{
-		dest[count] = '\0';
-		count++;
-	}
-	return (dest);
+	return ((unsigned char)s1[count] - (unsigned char)s2[count]);
 }

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svasconc <svasconc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 22:20:49 by svasconc          #+#    #+#             */
-/*   Updated: 2021/04/13 19:01:52 by svasconc         ###   ########.fr       */
+/*   Created: 2021/04/16 00:11:05 by svasconc          #+#    #+#             */
+/*   Updated: 2021/04/16 14:06:01 by svasconc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strstr(char *str, char *to_find)
 {
-	unsigned int	count;
+	int	count1;
+	int	count2;
 
-	count = 0;
-	while (src[count] != '\0' && count < n)
+	count1 = 0;
+	if (to_find[0] == '\0')
+		return (str);
+	while (str[count1])
 	{
-		dest[count] = src[count];
-		count++;
+		count2 = 0;
+		while (str[count1 + count2] == to_find[count2])
+		{
+			if (to_find[count2 + 1] == '\0')
+				return (&str[count1]);
+			count2++;
+		}
+		count1++;
 	}
-	while (count < n)
-	{
-		dest[count] = '\0';
-		count++;
-	}
-	return (dest);
+	return (0);
 }
